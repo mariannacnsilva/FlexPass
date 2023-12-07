@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="criar-usuario/src/main/java"/>
+	<classpathentry kind="src" path="criar-usuario/src/test/java"/>
+	<classpathentry kind="lib" path="criar-usuario/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="src" path="teste/src/main/java/teste/api/teste"/>
+	<classpathentry kind="output" path="criar-usuario/target/classes"/>
+</classpath>
