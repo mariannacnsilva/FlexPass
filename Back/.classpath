@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="criar-usuario/src/test/java"/>
 	<classpathentry kind="lib" path="criar-usuario/.mvn/wrapper/maven-wrapper.jar"/>
 	<classpathentry kind="src" path="teste/src/main/java/teste/api/teste"/>
+	<classpathentry kind="src" path="flaxpass/src/main/java/flexpass/api/demo"/>
 	<classpathentry kind="output" path="criar-usuario/target/classes"/>
 </classpath>
