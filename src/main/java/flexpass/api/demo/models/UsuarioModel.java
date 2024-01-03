@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,8 +20,12 @@ import javax.persistence.OneToMany;
 public class UsuarioModel {
 
     @Id
-    @Column (name = "cpf", unique = true)
-    private int cpf;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // define o padrao de criacao automatica de id
+    @Column(name = "Id", unique = true)
+    private Long Id;
+    
+    @Column (name = "cpf",length = 11, unique = true)
+    private String cpf;
     
     @Column (name = "nome", length = 100, nullable = false)
     @NotBlank
@@ -46,7 +52,8 @@ public class UsuarioModel {
     public UsuarioModel() {
     }
 
-    public UsuarioModel(int cpf, String nome, String email, String senha, String telefone) {
+    public UsuarioModel(Long Id, String cpf, String nome, String email, String senha, String telefone) {
+        this.Id = Id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -54,11 +61,19 @@ public class UsuarioModel {
         this.telefone = telefone;
     }
 
-    public int getCpf() {
+    public Long getId() {
+        return this.Id;
+    }
+
+    public void setId(Long Id) {
+        this.Id = Id;
+    }
+
+    public String getCpf() {
         return this.cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
