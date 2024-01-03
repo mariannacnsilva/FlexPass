@@ -3,6 +3,8 @@ package flexpass.api.demo.controllers;
 import java.net.URI;
 import java.util.List;
 
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -22,7 +25,7 @@ import flexpass.api.demo.services.UsuarioService;
 
 // Controller é por onde o front vai se comunicar
 @RestController
-@RequestMapping ("/usuario")
+@RequestMapping (value="/usuario", method = RequestMethod.POST)
 @Validated
 public class UsuarioController {
 
@@ -33,15 +36,15 @@ public class UsuarioController {
     public ResponseEntity<Void> createUsuario(@RequestBody @Validated UsuarioModel usuario) {
         this.usuarioService.createUsuario(usuario);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{cpf}").buildAndExpand(usuario.getCpf()).toUri();
+            .path("/{Id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).build();
 
     }
 
     //metodos para receber os dados do front e encaminha-los
-    @GetMapping("/{cpf}")
-    public ResponseEntity<UsuarioModel> buscarUsuario(@PathVariable Integer cpf) {
-        UsuarioModel usuario = this.usuarioService.getUsuarioById(cpf);
+    /*@GetMapping("/{Id}")
+    public ResponseEntity<UsuarioModel> buscarUsuario(@PathVariable Long Id) {
+        UsuarioModel usuario = this.usuarioService.getUsuarioById(Id);
         return ResponseEntity.ok().body(usuario);
     }
 
@@ -51,17 +54,17 @@ public class UsuarioController {
         return ResponseEntity.ok().body(usuarios);
     }
 
-    @PutMapping("/{cpf}")
-    public ResponseEntity<UsuarioModel> updateUsuario(@PathVariable Integer cpf, @RequestBody @Validated UsuarioModel usuario) {
-        usuario.setCpf(cpf);
-        this.usuarioService.updateUsuario(cpf, usuario);
+    @PutMapping("/{Id}")
+    public ResponseEntity<UsuarioModel> updateUsuario(@PathVariable Long Id, @RequestBody @Validated UsuarioModel usuario) {
+        usuario.setId(Id);
+        this.usuarioService.updateUsuario(Id, usuario);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{cpf}")
-    public ResponseEntity<Void> excluirUsuario(@PathVariable Integer cpf) {
-        this.usuarioService.deleteUsuario(cpf);
+    @DeleteMapping("/{Id}")
+    public ResponseEntity<Void> excluirUsuario(@PathVariable Long Id) {
+        this.usuarioService.deleteUsuario(Id);
         return ResponseEntity.noContent().build();
-    }
+    }*/
     
 }
