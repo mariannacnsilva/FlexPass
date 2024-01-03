@@ -25,7 +25,7 @@
 
 <body class="bg-gradient-primary">
 
-    <div class="container">
+    <div class="container" ng-app="app" ng-controller="usuarioController">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -37,37 +37,48 @@
                             <div class="text-center">
                                 <img src="logo2.jpg" class="img-fluid mb-4" style="width: 80px; height: 80px; left: 88px; top: 6px">
                             </div>
-                            <div class="text-center">
+                            <div class="text-center">y
                                 <h1 class="h4 text-gray-900 mb-4">Crie uma nova conta!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user"> <!-- Início do formulário -->
+
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div>
+                                    <!--<label class="font-weight-bold required" for="nome">Nome</label>-->
+                                    <input type="text" class="form-control form-control-user" id="nome" placeholder="nome" maxlength="100"
+                                        [(ngModel)]="nome">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <!--<label class="font-weight-bold required" for="nome">CPF</label>-->
+                                    <input type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" class="form-control form-control-user" id="cpf" maxlength="11"
+                                        [(ngModel)]="cpf">
+                                </div>
+                                <div class="form-group">
+                                    <!--<label class="font-weight-bold required" for="nome">Email</label>-->
+                                    <input type="email" class="form-control form-control-user" id="email" placeholder="Email Address"
+                                         [(ngModel)]="email">
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
+                                    <!--<label class="font-weight-bold required" for="nome">Senha</label>-->
+                                    <input type="password" class="form-control form-control-user" id="senha" placeholder="senha" 
+                                        [(ngModel)]="senha">
                                 </div>
-                                <a href="home-usuario.html" class="btn btn-primary btn-user btn-block">
+                                <div class="form-group">
+                                    <!--<label class="font-weight-bold required" for="nome">Telefone</label>-->
+                                    <input type="telefone" class="form-control form-control-user" id="telefone" placeholder="Informe o telefone"
+                                        [(ngModel)]="telefone">
+                                </div>
+                                <!-- Fim dos dados do formulário -->
+
+                                <button class="btn btn-primary btn-user btn-block"
+                                    (click)="registrar()"><!-- Encaminha o formulario para o método registrar em cadastro-usuario.js -->Registrar
+                                </button>
+
+                                <!-- 
+                                    <a href="home-usuario.html" class="btn btn-primary btn-user btn-block">
                                     Registrar Conta
                                 </a>
+                                -->
+
                             </form>
                             <hr>
                             <div class="text-center">
@@ -81,6 +92,7 @@
 
     </div>
 
+    <script defer src="app.js"></script>
 </body>
 
 </html>
